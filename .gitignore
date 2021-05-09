@@ -1,0 +1,8 @@
+# Ignore lock because crate is library only
+Cargo.lock
+
+# Rust output
+/target/
+
+# VS Code
+/.vscode/
