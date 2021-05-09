@@ -1,4 +1,4 @@
-//! Serialize values into a human-readable encoding that preserves lexicographic sort order.
+//! Serialization of values into a human-readable encoding that preserves lexicographic sort order.
 //!
 //! The encoded format is useful for key-value stores/databases that maintains keys in sorted order.
 //!

@@ -6,18 +6,7 @@ strkey is Rust library for serialization of values into an human-readable encodi
 
 This crate is similar to [bytekey](https://crates.io/crates/bytekey)/[bytekey-fix](https://crates.io/crates/bytekey-fix)/[bytekey2](https://crates.io/crates/bytekey2) except those this crate encodes into a human-readable, UTF-8 encoded string.
 
-Most data types in the [Serde data model](https://serde.rs/data-model.html) are supported. The encoding consists of each encoded value separated by a deliminator (a colon `:` by default). Note that the encoding is not self-describing:
-
-* For unit type, it's not considered a value and no encoding action happens.
-* For booleans, they are encoded as literals "true" or "false".
-* For integers, they are encoded as fixed-width hexadecimal of their big-endian representations. Signed integers are preprocessed with some bit manipulation, as in the bytekey crate, so that negative numbers sort first.
-* For floating point numbers, they're preprocessed with some bit manipulation, as in the bytekey crate, so that negative numbers sort first. Then encoded as hexadecimal.
-* For strings, no special encoding is done since they are already UTF-8 encoded.
-* For byte arrays (requires [serde_bytes](https://crates.io/crates/serde_bytes)), they are encoded as hexadecimal.
-* For tuples, each encoded value is separated by the configured deliminator. Note that deliminator are emitted along values; the data structure itself doesn't cause deliminators to be emitted.
-* For structs, the field names are *not* encoded. Only the values are encoded as it were a tuple. This can be useful for labeling each part of the database key without encoding the schema itself.
-* For enums with unit variants, only the name of the enum's variant is encoded. The name of the enum itself is not encoded.
-* For option, maps, sequences, and enums with tuple or struct variants are not supported and return an error.
+Most data types in the [Serde data model](https://serde.rs/data-model.html) are supported. The encoding consists of each encoded value separated by a deliminator (a colon `:` by default). Integers, floats, and byte arrays are encoded in hexadecimal while strings are left as is in UTF-8. Full details are listed in the documentation in the `ser` module. Note that the encoding is not self-describing, that is, types are not encoded within the format.
 
 ## Quick start
 

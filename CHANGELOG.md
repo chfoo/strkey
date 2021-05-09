@@ -1,5 +1,5 @@
 # Changelog
 
-## 0.1.0 (unreleased)
+## 0.1.0 (2021-05-09)
 
 * First release
